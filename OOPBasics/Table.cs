@@ -7,7 +7,7 @@
         public string GUID { get; set; }
         public double Height { get; set; }
         public double Width { get; set; }
-        public Material Material { get; set; }
+        Material Material { get; set; }
         // Можно потратить много времени на 
         // поиск подходящего имени для свойства
         // потому что свойство ниже это может быть
@@ -23,11 +23,21 @@
         // но Hit - меняет состояние объекта
         // Hit - поведение
 
+        public Table(Material material)
+        {
+            Material = material;
+        }
+
         public bool IsBroken { get; set; } = false;
 
         public void Hit()
-        { 
+        {
             IsBroken = true;
+        }
+
+        public void TryBurn()
+        {
+            Material.TryBurn();
         }
     }
 
